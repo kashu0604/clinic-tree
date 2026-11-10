@@ -103,3 +103,19 @@ E = {
 for label, appointment in [("D", D), ("E", E)]:
     action, leaf, p_noshow = decide(appointment)
     print(f"{label}: {action} leaf={leaf} no-show probability={p_noshow:.4f}")
+
+HOURS_PER_DAY = 9
+APPOINTMENTS_PER_HOUR = 3
+DOCTORS = 3
+DAYS_PER_YEAR = 250
+APPOINTMENTS_PER_YEAR = HOURS_PER_DAY * APPOINTMENTS_PER_HOUR * DOCTORS * DAYS_PER_YEAR
+print("APPOINTMENTS_PER_YEAR:", APPOINTMENTS_PER_YEAR)
+
+baseline_per = value(*baseline) / n_test
+v1_per = value(*v1_test) / n_test
+baseline_yearly = round(baseline_per * APPOINTMENTS_PER_YEAR)
+v1_yearly = round(v1_per * APPOINTMENTS_PER_YEAR)
+yearly_savings = v1_yearly - baseline_yearly
+print(f"baseline yearly value: {baseline_yearly}")
+print(f"v1 yearly value: {v1_yearly}")
+print(f"yearly savings: {yearly_savings}")
